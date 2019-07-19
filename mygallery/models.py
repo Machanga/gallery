@@ -9,17 +9,25 @@ class Image(models.Model):
     title = models.CharField(max_length=60)
     description = models.CharField(max_length=300, blank = True)
     post_date = models.DateTimeField(auto_now_add=True)
-    # category = models.ManyToManyField(category)
-    # location = models.ForeignKey(location)
+    category = models.ManyToManyField(category)
+    location = models.ForeignKey(location)
 
-class Location(models.Model):
+    def __str__(self):
+        return self.title
+
+class location(models.Model):
     '''
     This is a class for the location of where the images were taken
     '''
     name = models.CharField(max_length = 30)
 
-class Category(models.Model):
+    def __str__(self):
+        return self.name
+
+class category(models.Model):
     '''
     This is a class for the different categories that different images belong to
     '''
     name = models.CharField(max_length = 30)
+    def __str__(self):
+        return self.name

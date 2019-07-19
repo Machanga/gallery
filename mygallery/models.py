@@ -12,8 +12,14 @@ class Image(models.Model):
     # category = models.ManyToManyField(category)
     # location = models.ForeignKey(location)
 
-class location(models.Model):
+class Location(models.Model):
     '''
     This is a class for the location of where the images were taken
+    '''
+    name = models.CharField(max_length = 30)
+
+class Category(models.Model):
+    '''
+    This is a class for the different categories that different images belong to
     '''
     name = models.CharField(max_length = 30)

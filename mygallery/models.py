@@ -22,6 +22,13 @@ class Location(models.Model):
         Method to update locations
         '''
         cls.objects.filter(name=location).update(name=new_location)
+    
+    @classmethod
+    def delete_location(cls,location):
+        '''
+        Method to delete locations
+        '''
+        cls.objects.filter(name=location).delete()
 
 
 class Category(models.Model):
@@ -44,6 +51,13 @@ class Category(models.Model):
         Method to update categories
         '''
         cls.objects.filter(name=category).update(name=new_category)
+    
+    @classmethod
+    def delete_category(cls,category):
+        '''
+        Method to delete categories
+        '''
+        cls.objects.filter(name=category).delete()
 
 class Image(models.Model): 
     '''
@@ -71,6 +85,13 @@ class Image(models.Model):
         Method to update locations
         '''
         cls.objects.filter(name=image).update(name=new_image)
+    
+    @classmethod
+    def delete_image(cls,image):
+        '''
+        Method to delete images
+        '''
+        cls.objects.filter(name=image).delete()
 
     @classmethod
     def search_by_category(cls,search_term):

@@ -10,6 +10,12 @@ class location(models.Model):
     def __str__(self):
         return self.name
 
+    def save_location(self):
+        '''
+        Method to save new locations
+        '''
+        self.save()
+
 class category(models.Model):
     '''
     This is a class for the different categories that different images belong to
@@ -18,7 +24,7 @@ class category(models.Model):
     def __str__(self):
         return self.name
 
-class Image(models.Model):
+class Image(models.Model): 
     '''
     image class for all images added to the application
     '''

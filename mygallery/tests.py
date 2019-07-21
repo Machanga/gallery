@@ -9,7 +9,7 @@ class locationTestClass(TestCase):
         self.location.save()
 
     def test_instance(self):
-        self.assertTrue(isinstance(self.nairobi, location))
+        self.assertTrue(isinstance(self.Nairobi, location))
     
 class categoryTestClass(TestCase):
     def setUp(self):

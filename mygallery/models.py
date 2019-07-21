@@ -105,4 +105,12 @@ class Image(models.Model):
     def search_by_category(cls,search_term):
         images = cls.objects.filter(category__icontains=search_term)
         return images
+    
+    @classmethod
+    def filter_by_location(cls, location):
+        '''
+        Method to filter images according to location
+        '''
+        images = cls.objects.filter(location__name=location)
+        return images
 

@@ -24,6 +24,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save_category(self):
+        '''
+        Method to save new categories
+        '''
+        self.save()
+
 class Image(models.Model): 
     '''
     image class for all images added to the application

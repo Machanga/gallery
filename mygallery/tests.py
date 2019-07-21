@@ -40,9 +40,23 @@ class categoryTestClass(TestCase):
 class ImageTestClass(TestCase):
     def setUp(self):
         # Creating a new image, location and category and saving it
-        self.image= Image(image = "/images", name = "TestImage", description = "A image for testing", location =self.location, category="thrilling" )
+        self.image= Image(image = "/images", name = "TestImage", description = "An image for testing", location =self.location, category="thrilling" )
+        self.image.save_image()
+
+        self.image= Image(image = "/images", name = "TestImage", description = "An image for testing", location =self.location )
         self.image.save_image()
     
+        # Creating a new category and saving it
+        self.category = category(name = 'Testcategory')
+        self.category.save()
+
+        self.image.categories.add(self.category)
+    
+    def tearDown(self):
+        Image.objects.all().delete()
+        Category.objects.all().delete()
+        Location.objects.all().delete() 
+
     def test_save_image(self):
         #Test to check if image saves
         self.image.save_image()

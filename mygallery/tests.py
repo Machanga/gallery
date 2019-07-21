@@ -29,8 +29,15 @@ class categoryTestClass(TestCase):
 
 class ImageTestClass(TestCase):
     def setUp(self):
-        # Creating a new editor and saving it
+        # Creating a new image, location and category and saving it
         self.image= Image(image = "/images", name = "TestImage", description = "A image for testing", location =self.location, category="thrilling" )
         self.image.save_image()
-        # Testing  instance
+    
+    def test_save_image(self):
+        #Test to check if image saves
+        self.image.save_image()
+        images= Image.objects.all()
+        self.assertTrue(len(images) > 0)
+    
+
 

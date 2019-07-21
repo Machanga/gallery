@@ -16,6 +16,14 @@ class Location(models.Model):
         '''
         self.save()
 
+    @classmethod
+    def update_location(cls,location, new_location):
+        '''
+        Method to update locations
+        '''
+        cls.objects.filter(name=location).update(name=new_location)
+
+
 class Category(models.Model):
     '''
     This is a class for the different categories that different images belong to
@@ -29,6 +37,13 @@ class Category(models.Model):
         Method to save new categories
         '''
         self.save()
+
+    @classmethod
+    def update_category(cls,category, new_ctegory):
+        '''
+        Method to update categories
+        '''
+        cls.objects.filter(name=category).update(name=new_category)
 
 class Image(models.Model): 
     '''
@@ -49,6 +64,13 @@ class Image(models.Model):
         Method to save new images
         '''
         self.save()
+    
+    @classmethod
+    def update_image(cls,image, new_image):
+        '''
+        Method to update locations
+        '''
+        cls.objects.filter(name=image).update(name=new_image)
 
     @classmethod
     def search_by_category(cls,search_term):

@@ -94,6 +94,14 @@ class Image(models.Model):
         cls.objects.filter(name=image).delete()
 
     @classmethod
+    def get_image_by_id(cls, id):
+        '''
+        Method to filter images according to id
+        '''
+        images = cls.objects.filter(id = id)
+        return images
+
+    @classmethod
     def search_by_category(cls,search_term):
         images = cls.objects.filter(category__icontains=search_term)
         return images

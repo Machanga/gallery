@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class location(models.Model):
+class Location(models.Model):
     '''
     This is a class for the location of where the images were taken
     '''
@@ -16,7 +16,7 @@ class location(models.Model):
         '''
         self.save()
 
-class category(models.Model):
+class Category(models.Model):
     '''
     This is a class for the different categories that different images belong to
     '''
@@ -32,8 +32,8 @@ class Image(models.Model):
     title = models.CharField(max_length=60)
     description = models.CharField(max_length=300, blank = True)
     post_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(category)
-    location = models.ForeignKey(location)
+    category = models.ForeignKey(Category)
+    location = models.ForeignKey(Location)
 
     def __str__(self):
         return self.title

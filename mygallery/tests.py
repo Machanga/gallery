@@ -11,6 +11,11 @@ class locationTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.Nairobi, location))
     
+    def test_save_method(self):
+        self.Nairobi.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations)>0)
+    
 class categoryTestClass(TestCase):
     def setUp(self):
     # Creating a new category and saving it

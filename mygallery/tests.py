@@ -7,6 +7,9 @@ class locationTestClass(TestCase):
         # Creating a new location and saving it
         self.location = location(name = 'Nairobi')
         self.location.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.nairobi, location))
     
 class categoryTestClass(TestCase):
     def setUp(self):

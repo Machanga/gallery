@@ -17,6 +17,7 @@ class category(models.Model):
     name = models.CharField(max_length = 30)
     def __str__(self):
         return self.name
+
 class Image(models.Model):
     '''
     image class for all images added to the application
@@ -25,9 +26,14 @@ class Image(models.Model):
     title = models.CharField(max_length=60)
     description = models.CharField(max_length=300, blank = True)
     post_date = models.DateTimeField(auto_now_add=True)
-    category = models.ManyToManyField(category)
+    category = models.ForeignKey(category)
     location = models.ForeignKey(location)
 
     def __str__(self):
         return self.title
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        images = cls.objects.filter(category__icontains=search_term)
+        return images
 

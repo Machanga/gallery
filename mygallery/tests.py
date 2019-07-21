@@ -19,9 +19,13 @@ class locationTestClass(TestCase):
 class categoryTestClass(TestCase):
     def setUp(self):
     # Creating a new category and saving it
-        self.category = category(name = 'Testcategory')
+        self.category = category(name = 'Vacation')
         self.category.save()
 
+    def test_save_method(self):
+        self.Vacation.save_category()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories)>0)
 
 class ImageTestClass(TestCase):
     def setUp(self):

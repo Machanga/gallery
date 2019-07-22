@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Location(models.Model):
     '''
     This is a class for the location of where the images were taken
@@ -36,6 +35,7 @@ class Category(models.Model):
     This is a class for the different categories that different images belong to
     '''
     name = models.CharField(max_length = 30)
+
     def __str__(self):
         return self.name
 
@@ -64,14 +64,13 @@ class Image(models.Model):
     image class for all images added to the application
     '''
     image = models.ImageField(upload_to='images/')
-    title = models.CharField(max_length=60)
+    name = models.CharField(max_length=60)
     description = models.CharField(max_length=300, blank = True)
-    post_date = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey(Category)
-    location = models.ForeignKey(Location)
+    category = models.ForeignKey('Category')
+    location = models.ForeignKey('Location')
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def save_image(self):
         '''
